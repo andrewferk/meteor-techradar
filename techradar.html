@@ -1,0 +1,58 @@
+<head>
+  <title>techradar</title>
+  <script type="text/javascript" src="raphael-min.js"></script>
+</head>
+
+<body>
+  <div class="row-fluid">
+    <div class="span4">
+      {{> blip-form}}
+      {{> blip-index}}
+    </div>
+    <div class="span8">
+      {{> radar-svg}}
+    </div>
+  </div>
+</body>
+
+<template name="blip-form">
+  <form class="form-inline">
+    <input type="text" placeholder="New blip..." />
+    <button type="submit" class="btn">Create Blimp</button>
+  </form>
+</template>
+
+<template name="blip-index">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Blip</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each blips}}
+        {{> blip-row}}
+      {{/each}}
+    </tbody>
+  </table>
+</template>
+
+<template name="blip-row">
+  <tr class="{{hover}}">
+    <td>{{name}}</td>
+    <td><a class="btn btn-mini btn-danger" href="#" data-action="remove" title="Remove"><i class="icon-remove icon-white"></i> Remove</a></td>
+  </tr>
+</template>
+
+<template name="radar-svg">
+  <div id="radar-canvas"/>
+  <!--<svg width="400" height="400">
+    <circle cx="50%" cy="50%" r="19%" style="fill-opacity: 0.0; stroke: black;"/>
+    <circle cx="50%" cy="50%" r="29%" style="fill-opacity: 0.0; stroke: black;"/>
+    <circle cx="50%" cy="50%" r="39%" style="fill-opacity: 0.0; stroke: black;"/>
+    <circle cx="50%" cy="50%" r="49%" style="fill-opacity: 0.0; stroke: black;"/>
+    <line x1="1%" y1="50%" x2="99%" y2="50%" stroke="black"/>
+    <line x1="50%" y1="1%" x2="50%" y2="99%" stroke="black"/>
+  </svg>-->
+</template>
