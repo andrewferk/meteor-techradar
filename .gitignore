@@ -1,2 +1,4 @@
 local
 *.un~
+server/settings.json
+.DS_Store

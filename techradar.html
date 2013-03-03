@@ -1,25 +1,51 @@
 <head>
   <title>techradar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="text/javascript" src="raphael-min.js"></script>
 </head>
 
 <body>
   {{> header}}
-  <div class="row-fluid">
-    <div class="span4">
-      {{> blip-form}}
-      {{> blip-index}}
-    </div>
-    <div class="span8">
-      {{> radar-svg}}
+  <div class="container">
+    <div class="row">
+      <div class="span3">
+        {{> radar-index}}
+      </div>
+      <div class="span3">
+        {{> blip-form}}
+        {{> blip-index}}
+      </div>
+      <div class="span6">
+        {{> radar-svg}}
+      </div>
     </div>
   </div>
+  {{> modals}}
 </body>
 
+<template name="radar-index">
+  <div class="well" style="padding: 8px 0;">
+    <ul class="nav nav-list">
+      <li class="nav-header">
+        Your Radars
+        <button class="btn btn-mini btn-primary pull-right" data-action="new-radar" data-toggle="modal" data-target="#new-radar-modal">Create</button>
+      </li>
+      {{#each radars}}
+        {{> radar-row}}
+      {{/each}}
+    </ul>
+  </div>
+</template>
+
+<template name="radar-row">
+  <li><a href="#">{{name}}</a></li>
+</template>
+
 <template name="header">
-  <div class="navbar">
+  <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
+        <a class="brand" href="#">Tech Radar</a>
         <ul class="nav pull-right">
           {{#if currentUser}}
             {{> user-loggedin}}
@@ -95,4 +121,51 @@
     <line x1="1%" y1="50%" x2="99%" y2="50%" stroke="black"/>
     <line x1="50%" y1="1%" x2="50%" y2="99%" stroke="black"/>
   </svg>-->
+</template>
+
+<template name="error-modal">
+  <div id="error-modal" class="modal hide">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">x</button>
+      <h3>Error</h3>
+    </div>
+    <div class="modal-body">
+      <p class="reason">{{> error-reason}}</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</template>
+
+<template name="error-reason">
+  {{reason}}
+</template>
+
+<template name="new-radar-modal">
+  <div id="new-radar-modal" class="modal hide">
+    <form class="modal-form form-horizontal">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Create a New Tech Radar</h3>
+      </div>
+      <div class="modal-body">
+        <div class="control-group">
+          <label class="control-label" for="new-radar-name">Name</label>
+          <div class="controls">
+            <input type="text" id="new-radar-name"/>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-success">Create</button>
+      </div>
+    </form>
+  </div>
+</template>
+
+<template name="modals">
+  {{> error-modal}}
+  {{> new-radar-modal}}
 </template>

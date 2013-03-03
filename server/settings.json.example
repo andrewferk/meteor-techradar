@@ -1,0 +1,6 @@
+{
+  "google": {
+    "token": "123.apps.googleusercontent.com",
+    "secret": "ABC"
+  }
+}
