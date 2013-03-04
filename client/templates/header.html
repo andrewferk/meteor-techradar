@@ -1,0 +1,46 @@
+<template name="header">
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="#">Tech Radar</a>
+        <ul class="nav pull-right">
+          {{#if currentUser}}
+            {{> user-loggedin}}
+          {{else}}
+            {{> user-loggedout}}
+          {{/if}}
+        <ul>
+      </div>
+    </div>
+  <div>
+</template>
+
+<template name="user-loggedin">
+  {{#if loggingIn}}
+    <li><a href="#">Logging in...</a></li>
+  {{else}}
+    <li>
+      <img class="img-rounded profile-pic-small" src="{{currentUser.profile.picture}}" />
+    </li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        {{currentUser.profile.name}}
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="#" id="logout">Logout</a></li>
+      </ul>
+    </li>
+  {{/if}}
+</template>
+
+<template name="user-loggedout">
+  <li><a href="#" id="login">Login with Google</a></li>
+</template>
+
+<template name="blip-form">
+  <form class="form-inline">
+    <input type="text" placeholder="New blip..." />
+    <button type="submit" class="btn">Create Blip</button>
+  </form>
+</template>

@@ -8,14 +8,14 @@
   {{> header}}
   <div class="container">
     <div class="row">
-      <div class="span3">
+      <div class="span2">
         {{> radar-index}}
       </div>
-      <div class="span3">
+      <div class="span5">
         {{> blip-form}}
         {{> blip-index}}
       </div>
-      <div class="span6">
+      <div class="span5">
         {{> radar-svg}}
       </div>
     </div>
@@ -24,7 +24,7 @@
 </body>
 
 <template name="radar-index">
-  <div class="well" style="padding: 8px 0;">
+  <div class="well nav-well">
     <ul class="nav nav-list">
       <li class="nav-header">
         Your Radars
@@ -38,54 +38,7 @@
 </template>
 
 <template name="radar-row">
-  <li><a href="#">{{name}}</a></li>
-</template>
-
-<template name="header">
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <a class="brand" href="#">Tech Radar</a>
-        <ul class="nav pull-right">
-          {{#if currentUser}}
-            {{> user-loggedin}}
-          {{else}}
-            {{> user-loggedout}}
-          {{/if}}
-        <ul>
-      </div>
-    </div>
-  <div>
-</template>
-
-<template name="user-loggedin">
-  {{#if loggingIn}}
-    <li><a href="#">Logging in...</a></li>
-  {{else}}
-    <li>
-      <img class="img-rounded" src="{{currentUser.profile.picture}}" style="height: 32px; margin-top:4px;"/>
-    </li>
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        {{currentUser.profile.name}}
-        <b class="caret"></b>
-      </a>
-      <ul class="dropdown-menu">
-        <li><a href="#" id="logout">Logout</a></li>
-      </ul>
-    </li>
-  {{/if}}
-</template>
-
-<template name="user-loggedout">
-  <li><a href="#" id="login">Login with Google</a></li>
-</template>
-
-<template name="blip-form">
-  <form class="form-inline">
-    <input type="text" placeholder="New blip..." />
-    <button type="submit" class="btn">Create Blip</button>
-  </form>
+  <li class="{{active}}"><a href="#">{{name}}</a></li>
 </template>
 
 <template name="blip-index">
@@ -113,14 +66,6 @@
 
 <template name="radar-svg">
   <div id="radar-canvas"/>
-  <!--<svg width="400" height="400">
-    <circle cx="50%" cy="50%" r="19%" style="fill-opacity: 0.0; stroke: black;"/>
-    <circle cx="50%" cy="50%" r="29%" style="fill-opacity: 0.0; stroke: black;"/>
-    <circle cx="50%" cy="50%" r="39%" style="fill-opacity: 0.0; stroke: black;"/>
-    <circle cx="50%" cy="50%" r="49%" style="fill-opacity: 0.0; stroke: black;"/>
-    <line x1="1%" y1="50%" x2="99%" y2="50%" stroke="black"/>
-    <line x1="50%" y1="1%" x2="50%" y2="99%" stroke="black"/>
-  </svg>-->
 </template>
 
 <template name="error-modal">
