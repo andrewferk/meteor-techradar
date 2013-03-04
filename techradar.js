@@ -1,13 +1,3 @@
-// class Blip
-//   string name
-//   int    posx
-//   int    posy
-var Blips = new Meteor.Collection("blips");
-
-function getBlips() {
-  return Blips.find();
-}
-
 if (Meteor.isClient) {
   var svgns = "http://www.w3.org/2000/svg";
   
@@ -129,11 +119,5 @@ if (Meteor.isClient) {
     "click #logout": function(e) {
       Meteor.logout();
     }
-  });
-}
-
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
   });
 }

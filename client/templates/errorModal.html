@@ -1,0 +1,18 @@
+<template name="error-modal">
+  <div id="error-modal" class="modal hide">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">x</button>
+      <h3>Error</h3>
+    </div>
+    <div class="modal-body">
+      <p class="reason">{{> error-reason}}</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</template>
+
+<template name="error-reason">
+  {{reason}}
+</template>

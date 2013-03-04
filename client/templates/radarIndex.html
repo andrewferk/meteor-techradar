@@ -1,0 +1,17 @@
+<template name="radar-index">
+  <div class="well nav-well">
+    <ul class="nav nav-list">
+      <li class="nav-header">
+        Your Radars
+        <button class="btn btn-mini btn-primary pull-right" data-action="new-radar" data-toggle="modal" data-target="#new-radar-modal">Create</button>
+      </li>
+      {{#each radars}}
+        {{> radar-row}}
+      {{/each}}
+    </ul>
+  </div>
+</template>
+
+<template name="radar-row">
+  <li class="{{active}}"><a href="#">{{name}}</a></li>
+</template>

@@ -1,3 +1,13 @@
+// class Blip
+//   string name
+//   int    posx
+//   int    posy
+var Blips = new Meteor.Collection("blips");
+
+function getBlips() {
+  return Blips.find();
+}
+
 var Radars = new Meteor.Collection("radars");
 var myRadarsSub = Meteor.subscribe("myRadars");
 
