@@ -17,6 +17,18 @@ Template["radar-index"].helpers({
   }
 });
 
+Template["radar-row"].helpers({
+  active: function() {
+    return Session.equals("activeRadar", this._id) ? "active" : "";
+  }
+});
+
+Template["radar-row"].events({
+  "click a": function(e, tpl) {
+    Session.set("activeRadar", this._id);
+  }
+});
+
 Template["new-radar-modal"].events({
   "submit form": function(e, tpl) {
     e.preventDefault();
