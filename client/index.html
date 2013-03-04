@@ -6,22 +6,7 @@
 
 <body>
   {{> header}}
-  {{#if currentUser}}
-    <div class="container">
-      <div class="row">
-        <div class="span2">
-          {{> radar-index}}
-        </div>
-        <div class="span5">
-          {{> blip-form}}
-          {{> blip-index}}
-        </div>
-        <div class="span5">
-          {{> radar-svg}}
-        </div>
-      </div>
-    </div>
-  {{/if}}
+  {{> main}}
   {{> modals}}
 </body>
 

@@ -1,19 +1,8 @@
-// class Blip
-//   string name
-//   int    posx
-//   int    posy
-var Blips = new Meteor.Collection("blips");
-
-function getBlips() {
-  return Blips.find();
-}
-
-var Radars = new Meteor.Collection("radars");
-var myRadarsSub = Meteor.subscribe("myRadars");
-
-function myRadars() {
-  return Radars.find({owner: Meteor.userId()});
-}
+Template["main"].helpers({
+  activeRadar: function() {
+    return Session.get("activeRadar");
+  }
+});
 
 Template["error-reason"].helpers({
   reason: function() {

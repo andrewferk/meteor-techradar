@@ -9,21 +9,8 @@ if (Meteor.isClient) {
     Session.set("selectedBlip", null);
   }
 
-  Template["blip-form"].events({
-    "submit form": function(e) {
-      e.preventDefault();
-      var $target = $(e.currentTarget);
-      var name = $target.find("input").val();
-      Blips.insert({
-        name: name,
-        posx: 200,
-        posy: 200
-      });
-    }
-  });
-
-  Template["blip-index"].blips = getBlips;
-  Template["radar-svg"].blips  = getBlips;
+  Template["blip-index"].blips = activeBlips;
+  Template["radar-svg"].blips  = activeBlips;
   Template["radar-svg"].rendered = function() {
     var paper = Raphael("radar-canvas", 400, 400);
     var p1  = 400.0 * 0.01;
@@ -58,7 +45,7 @@ if (Meteor.isClient) {
       for (var i in blipCircles) {
         blipCircles[i].remove();
       }
-      var blips = getBlips();
+      var blips = activeBlips();
       blips.forEach(function(blip) {
         var circle = paper.circle(blip.posx, blip.posy, p2);
         circle.hover(function() {
@@ -89,23 +76,6 @@ if (Meteor.isClient) {
       });
     });
   };
-
-  Template["blip-row"].hover = function() {
-    return Session.equals("selectedBlip", this._id) ? "hover" : "";
-  };
-
-  Template["blip-row"].events({
-    "click a[data-action='remove']": function(e) {
-      e.preventDefault();
-      Blips.remove(this._id);
-    },
-    "mouseenter tr": function(e) {
-      selectBlip(this._id);
-    },
-    "mouseleave tr": function(e) {
-      deselectBlip();
-    }
-  });
 
   Template["user-loggedout"].events({
     "click #login": function(e) {

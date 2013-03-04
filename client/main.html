@@ -1,0 +1,20 @@
+<template name="main">
+  {{#if currentUser}}
+    <div class="container">
+      <div class="row">
+        <div class="span2">
+          {{> radar-index}}
+        </div>
+        {{#if activeRadar}}
+          <div class="span5">
+            {{> blip-form}}
+            {{> blip-index}}
+          </div>
+          <div class="span5">
+            {{> radar-svg}}
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  {{/if}}
+</template>
