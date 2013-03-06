@@ -2,6 +2,8 @@
 //   ObjectId owner
 //   ObjectId radar
 //   string   name
+//   string   quadrant
+//   string   ring
 //   int      posx
 //   int      posy
 var Blips = new Meteor.Collection("blips");

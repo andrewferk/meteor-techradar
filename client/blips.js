@@ -22,11 +22,13 @@ Template["blip-form"].events({
     e.preventDefault();
 
     var blip = {
-      owner: Meteor.userId(),
-      radar: Session.get("activeRadar"),
-      name:  $(tpl.find("input")).val(),
-      posx:  200,
-      posy:  200
+      owner:    Meteor.userId(),
+      radar:    Session.get("activeRadar"),
+      name:     $(tpl.find("input")).val(),
+      quadrant: "",
+      ring:     "",
+      posx:     200,
+      posy:     200
     };
 
     Blips.insert(blip, function(error, id) {

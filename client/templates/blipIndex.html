@@ -3,7 +3,9 @@
     <thead>
       <tr>
         <th>Blip</th>
-        <th>Actions</th>
+        <th>Quadrant</th>
+        <th>Ring</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -17,6 +19,8 @@
 <template name="blip-row">
   <tr class="{{hover}}">
     <td>{{name}}</td>
+    <td>{{quadrant}}</td>
+    <td>{{ring}}</td>
     <td><a class="btn btn-mini btn-danger" href="#" data-action="remove" title="Remove"><i class="icon-remove icon-white"></i> Remove</a></td>
   </tr>
 </template>
