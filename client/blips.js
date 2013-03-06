@@ -8,6 +8,14 @@ function myBlips(radarId) {
 function activeBlips() {
   return myBlips(Session.get("activeRadar"));
 }
+  
+function selectBlip(id) {
+  Session.set("selectedBlip", id);
+}
+
+function deselectBlip() {
+  Session.set("selectedBlip", null);
+}
 
 Template["blip-form"].events({
   "submit form": function(e, tpl) {
@@ -29,6 +37,8 @@ Template["blip-form"].events({
     });
   }
 });
+
+Template["blip-index"].blips = activeBlips;
 
 Template["blip-row"].hover = function() {
   return Session.equals("selectedBlip", this._id) ? "hover" : "";
