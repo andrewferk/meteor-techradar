@@ -5,22 +5,30 @@
   
   function createRadarCanvas() {
     var paper = Raphael("radar-canvas", 400, 400);
-    paper.circle(p(50), p(50), p(19)).attr({
-      "fill-opacity": "0.0",
-      "stroke": "black"
-    });
-    paper.circle(p(50), p(50), p(29)).attr({
-      "fill-opacity": "0.0",
+    paper.circle(p(50), p(50), p(49)).attr({
+      "fill": "#BFEFFF",
+      "fill-opacity": "0.3",
       "stroke": "black"
     });
     paper.circle(p(50), p(50), p(39)).attr({
-      "fill-opacity": "0.0",
+      "fill": "#BFEFFF",
+      "fill-opacity": "0.35",
       "stroke": "black"
     });
-    paper.circle(p(50), p(50), p(49)).attr({
-      "fill-opacity": "0.0",
+    paper.circle(p(50), p(50), p(29)).attr({
+      "fill": "#BFEFFF",
+      "fill-opacity": "0.50",
       "stroke": "black"
     });
+    paper.circle(p(50), p(50), p(19)).attr({
+      "fill": "#BFEFFF",
+      "fill-opacity": "1.0",
+      "stroke": "black"
+    });
+    paper.text(p(55), p(35), "Adopt").rotate(10);
+    paper.text(p(54), p(24), "Trial").rotate(10);
+    paper.text(p(55.5), p(14), "Assess").rotate(10);
+    paper.text(p(54), p(4), "Hold").rotate(10);
     paper.path("M"+p(1)+","+p(50)+"H"+p(99)).attr("stroke", "black");
     paper.path("M"+p(50)+","+p(1)+"V"+p(99)).attr("stroke", "black");
   
